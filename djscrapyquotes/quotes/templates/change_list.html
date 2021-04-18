@@ -1,0 +1,21 @@
+{% extends 'admin/change_list.html' %}
+{% load static %}
+
+{% block object-tools %}
+<div>
+    <form action="{% url 'scrape_quotes_from_author' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder="Author name" name="athr_name" />
+        <button type="submit" class="button" style="padding: 0.5rem">Scrape
+            quotes from author</button>
+    </form>
+
+    <form action="{% url 'scrape_all_quotes' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="button" style="padding: 0.5rem">Scrape All
+            Quotes</button>
+    </form>
+</div>
+<br />
+{{ block.super }}
+{% endblock %}
